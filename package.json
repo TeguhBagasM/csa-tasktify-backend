@@ -1,11 +1,14 @@
 {
-  "name": "csa-tasktify",
+  "name": "express-sequelize-postgresql-api",
   "version": "1.0.0",
   "description": "Express.js API with Sequelize and PostgreSQL",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "db:setup": "node scripts/setup-database.js",
+    "db:sync": "node -e \"require('dotenv').config(); require('./models').sequelize.sync({alter: true}).then(() => {console.log('Database synced!'); process.exit(0);}).catch(err => {console.error(err); process.exit(1);})\"",
+    "db:reset": "node -e \"require('dotenv').config(); require('./models').sequelize.sync({force: true}).then(() => {console.log('Database reset!'); process.exit(0);}).catch(err => {console.error(err); process.exit(1);})\"",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all"
   },
@@ -29,7 +32,7 @@
     "api",
     "vercel"
   ],
-  "author": "Teguh Bagas M",
+  "author": "Your Name",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"

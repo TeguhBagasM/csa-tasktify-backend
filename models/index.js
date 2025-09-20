@@ -14,6 +14,10 @@ if (env === "production" && process.env.DATABASE_URL) {
         require: true,
         rejectUnauthorized: false,
       },
+      searchPath: "public",
+    },
+    define: {
+      schema: "public",
     },
     logging: false,
     pool: dbConfig.pool,
@@ -24,6 +28,8 @@ if (env === "production" && process.env.DATABASE_URL) {
     port: dbConfig.port,
     dialect: dbConfig.dialect,
     logging: dbConfig.logging,
+    define: dbConfig.define,
+    dialectOptions: dbConfig.dialectOptions,
     pool: dbConfig.pool,
   });
 }

@@ -75,7 +75,12 @@ const startServer = async () => {
     console.log("✅ Database connection established successfully.");
 
     // Sync database (create tables if they don't exist)
-    await sequelize.sync({ alter: false });
+    // Use force: true only for development to recreate tables
+    // Use alter: true to modify existing tables to match models
+    await sequelize.sync({
+      force: process.env.NODE_ENV === "development" && process.env.FORCE_SYNC === "true",
+      alter: process.env.NODE_ENV === "development",
+    });
     console.log("✅ Database synchronized successfully.");
 
     // Start server

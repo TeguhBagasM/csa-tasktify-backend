@@ -4,11 +4,17 @@ const config = {
   development: {
     host: process.env.DB_HOST || "localhost",
     username: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASS || "root",
-    database: process.env.DB_NAME || "csatasktify_dev",
+    password: process.env.DB_PASS || "",
+    database: process.env.DB_NAME || "express_api_dev",
     port: process.env.DB_PORT || 5432,
     dialect: "postgres",
     logging: console.log,
+    define: {
+      schema: "public",
+    },
+    dialectOptions: {
+      searchPath: "public",
+    },
     pool: {
       max: 5,
       min: 0,
@@ -24,6 +30,10 @@ const config = {
         require: true,
         rejectUnauthorized: false,
       },
+      searchPath: "public",
+    },
+    define: {
+      schema: "public",
     },
     logging: false,
     pool: {

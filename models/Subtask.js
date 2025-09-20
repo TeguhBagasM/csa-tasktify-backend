@@ -42,6 +42,7 @@ module.exports = (sequelize) => {
     },
     {
       tableName: "subtasks",
+      schema: "public",
       timestamps: true,
       createdAt: "created_at",
       updatedAt: "updated_at",

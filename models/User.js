@@ -53,6 +53,7 @@ module.exports = (sequelize) => {
     },
     {
       tableName: "users",
+      schema: "public",
       timestamps: true,
       createdAt: "created_at",
       updatedAt: "updated_at",
