@@ -9,12 +9,6 @@ const config = {
     port: process.env.DB_PORT || 5432,
     dialect: "postgres",
     logging: console.log,
-    define: {
-      schema: "public",
-    },
-    dialectOptions: {
-      searchPath: "public",
-    },
     pool: {
       max: 5,
       min: 0,
@@ -30,10 +24,6 @@ const config = {
         require: true,
         rejectUnauthorized: false,
       },
-      searchPath: "public",
-    },
-    define: {
-      schema: "public",
     },
     logging: false,
     pool: {
